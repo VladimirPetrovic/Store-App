@@ -9,6 +9,20 @@ export default class ProductService {
   getProducts() {
     return products
   }
+  increaseQty(id) {
+    products.find(product => {
+      if (product.id === id) {
+        product.quantity++
+      }
+    })
+  }
+  decreaseQty(id) {
+    products.find(product => {
+      if (product.id === id) {
+        product.quantity--
+      }
+    })
+  }
 }
 
 export const productService = new ProductService()

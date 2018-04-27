@@ -7,6 +7,8 @@
           <th scope="col">ID</th>
           <th scope="col">Title</th>
           <th scope="col">Quantity</th>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -14,6 +16,12 @@
           <td>{{ product.id }}</td>
           <td>{{ product.title }}</td>
           <td>{{ product.quantity }}</td>
+          <td>
+            <button class="btn btn-secondary btn-sm" @click="increaseQty(product.id)">+</button>
+          </td>
+          <td>
+            <button :disabled="product.quantity === 0" class="btn btn-secondary btn-sm" @click="decreaseQty(product.id)">-</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -37,6 +45,14 @@ export default {
       return this.products.filter(product => {
         return product.title.toLowerCase().includes(this.search.toLowerCase())
       })
+    }
+  },
+  methods: {
+    increaseQty(id) {
+      productService.increaseQty(id);
+    },
+    decreaseQty(id) {
+      productService.decreaseQty(id);
     }
   }
 }

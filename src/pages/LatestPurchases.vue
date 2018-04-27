@@ -4,7 +4,11 @@
       First name: {{ customer.firstName }}<br>
       Last name: {{ customer.lastName }}<br>
       Email: {{ customer.email }}<br>
-      <router-link to="/customers">Return</router-link>
+      List of products:<br>
+      <ul v-for="(product, key) in customer.products" :key="key">
+        <li>{{ product.title }}</li>
+      </ul>
+      <router-link to="/customers">Return to customers</router-link>
     </div>
   </div>
 </template>
