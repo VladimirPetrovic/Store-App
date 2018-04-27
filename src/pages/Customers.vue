@@ -3,15 +3,19 @@
     <table class="table mt-4 ml-1">
       <thead class="thead-light">
         <tr>
+          <th>Latest Purchases</th>
           <th scope="col">ID</th>
           <th scope="col">First</th>
           <th scope="col">Last</th>
           <th scope="col">Handle</th>
-          <th>&nbsp;</th>
+          <th scope="col">&nbsp;</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(customer, key) in customers" :key="customer.id">
+          <td>
+            <router-link :to="{path: '/customers/'+customer.id}" class="text-center align-middle col-1">Check</router-link>
+          </td>
           <td>{{ customer.id }}</td>
           <td>{{ customer.firstName }}</td>
           <td>{{ customer.lastName }}</td>
@@ -69,7 +73,3 @@ import { customerService } from '../utils/CustomerService.js'
     }
   }
 </script>
-
-<style>
-
-</style>

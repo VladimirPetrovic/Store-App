@@ -15,6 +15,10 @@ export default class CustomerService {
     customers.splice(id, 1)
   }
 
+  getCustomer(id) {
+    return customers.find(customer => customer.id == id)
+  }
+
   addCustomer(newCustomer) {
     newCustomer.id = customers.length + 1
     customers.push(newCustomer)
