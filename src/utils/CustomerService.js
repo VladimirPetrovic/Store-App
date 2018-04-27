@@ -11,8 +11,8 @@ export default class CustomerService {
     return customers;
   }
 
-  deleteCustomer(id) {
-    customers.splice(id, 1)
+  deleteCustomer(key) {
+    customers.splice(key, 1)
   }
 
   getCustomer(id) {

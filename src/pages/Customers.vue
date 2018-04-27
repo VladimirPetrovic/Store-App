@@ -3,25 +3,25 @@
     <table class="table mt-4 ml-1">
       <thead class="thead-light">
         <tr>
-          <th>Latest Purchases</th>
           <th scope="col">ID</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
+          <th scope="col">First name</th>
+          <th scope="col">Last name</th>
           <th scope="col">Handle</th>
+          <th scope="col">&nbsp;</th>
           <th scope="col">&nbsp;</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(customer, key) in customers" :key="customer.id">
-          <td>
-            <router-link :to="{path: '/customers/'+customer.id}" class="text-center align-middle col-1">Check</router-link>
-          </td>
           <td>{{ customer.id }}</td>
           <td>{{ customer.firstName }}</td>
           <td>{{ customer.lastName }}</td>
           <td>{{ customer.email }}</td>
           <td>
             <button class="btn btn-danger btn-sm" @click="deleteCustomer(key)">Delete</button>
+          </td>
+          <td>
+            <router-link :to="'/customers/'+customer.id" class="text-center align-middle col-1">Latest purchase</router-link>
           </td>
         </tr>
       </tbody>
@@ -63,8 +63,8 @@ import { customerService } from '../utils/CustomerService.js'
       this.customers = customerService.getCustomers()
     },
     methods: {
-      deleteCustomer(id) {
-        customerService.deleteCustomer(id)
+      deleteCustomer(key) {
+        customerService.deleteCustomer(key)
       },
       addCustomer() {
         customerService.addCustomer(this.newCustomer)
