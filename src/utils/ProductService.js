@@ -50,8 +50,7 @@ export default class ProductService {
     return products.find(product => product.id == id)
   }
   updateProduct(soldItem, buyer) {
-    product = products.find(product => product.id == soldItem.id)
-    product.customers.push(buyer)
+    products.find(product => product.id == soldItem.id).customers.push(buyer)
   }
 }
 

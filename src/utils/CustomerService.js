@@ -46,8 +46,7 @@ export default class CustomerService {
     customers.push(newCustomer)
   }
   addNewProductToCustomer(buyer, product) {
-    customer = customers.find(customer => customer.id === buyer.id)
-    customer.products.push(product)
+    customers.find(customer => customer.id === buyer.id).products.push(product)
   }
 }
 
