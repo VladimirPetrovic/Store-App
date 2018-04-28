@@ -51,16 +51,13 @@ import { customerService } from '../utils/CustomerService.js'
   export default {
     data() {
       return {
-        customers: [],
+        customers: customerService.getCustomers(),
         newCustomer: {
           firstName: '',
           lastName: '',
           email: ''
         }
       }
-    },
-    created() {
-      this.customers = customerService.getCustomers()
     },
     methods: {
       deleteCustomer(key) {

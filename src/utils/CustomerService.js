@@ -5,9 +5,9 @@ const customers = [
     lastName: 'Peric',
     email: 'pera@peric.com',
     products: [
-      { title: 'Juice' },
-      { title: 'Milk' },
-      { title: 'Bread' }
+      { id: 1, title: 'Juice' },
+      { id: 2, title: 'Milk' },
+      { id: 3,  title: 'Bread' }
     ]
   },
   {
@@ -15,33 +15,39 @@ const customers = [
     firstName: 'Joca',
     lastName: 'Jocic',
     email: 'joca@jocic.com',
-    products: []
+    products: [
+      { id: 3, title: 'Bread' }
+    ]
   },
   {
     id: 3,
     firstName: 'Mika',
     lastName: 'Brca',
     email: 'mika@brca.com',
-    products: []
+    products: [
+      { id: 2, title: 'Milk' },
+      { id: 3, title: 'Bread' }
+    ]
   }
 ]
-
+let customer = {}
 export default class CustomerService {
   getCustomers() {
     return customers;
   }
-
   deleteCustomer(key) {
     customers.splice(key, 1)
   }
-
   getCustomer(id) {
     return customers.find(customer => customer.id == id)
   }
-
   addCustomer(newCustomer) {
     newCustomer.id = customers.length + 1
     customers.push(newCustomer)
+  }
+  addNewProductToCustomer(buyer, product) {
+    customer = customers.find(customer => customer.id === buyer.id)
+    customer.products.push(product)
   }
 }
 

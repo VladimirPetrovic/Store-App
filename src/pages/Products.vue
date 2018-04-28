@@ -9,6 +9,7 @@
           <th scope="col">Quantity</th>
           <th scope="col">&nbsp;</th>
           <th scope="col">&nbsp;</th>
+          <th scope="col">&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +23,9 @@
           <td>
             <button :disabled="product.quantity === 0" class="btn btn-secondary btn-sm" @click="decreaseQty(product.id)">-</button>
           </td>
+          <td>
+            <router-link :to="'/products/' + product.id">Buy</router-link>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -30,20 +34,18 @@
 
 <script>
 import { productService } from '../utils/ProductService.js'
+
 export default {
   data() {
     return {
       search: '',
-      products: []
+      products: productService.getProducts()
     }
-  },
-  created() {
-    this.products = productService.getProducts();
   },
   computed: {
     filteredProducts() {
       return this.products.filter(product => {
-        return product.title.toLowerCase().includes(this.search.toLowerCase())
+        return product.title.toLowerCase().startsWith(this.search.toLowerCase())
       })
     }
   },

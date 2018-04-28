@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mt-3 ml-2">
+    <div class="mt-2 ml-2">
       First name: {{ customer.firstName }}<br>
       Last name: {{ customer.lastName }}<br>
       Email: {{ customer.email }}<br>
@@ -23,8 +23,7 @@ export default {
     }
   },
   created() {
-    let customerId = this.$route.params.id
-    this.customer = customerService.getCustomer(customerId)
+    this.customer = customerService.getCustomer(this.$route.params.id)
   }
 }
 </script>
